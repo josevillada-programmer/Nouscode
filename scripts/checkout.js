@@ -16,8 +16,6 @@ const checkoutSubmitButton = checkoutForm.querySelector('[type="submit"]');
 const selectedPaymentMethodInput = document.getElementById('selectedPaymentMethod');
 const checkoutError = document.getElementById('checkoutError');
 const paymentButtons = document.querySelectorAll('[data-method]');
-const apiBase = document.documentElement.dataset.apiBase.trim().replace(/\/$/, '');
-const apiUrl = checkoutForm.dataset.apiUrl;
 let selectedPaymentMethod = selectedPaymentMethodInput.value;
 
 let currentUser = null;
@@ -115,7 +113,7 @@ checkoutForm.addEventListener('submit', async (event) => {
   checkoutError.classList.add('hidden');
   checkoutSubmitButton.disabled = true;
   try {
-    const response = await fetch(`${apiBase}${apiUrl}`, {
+    const response = await fetch('/api/purchases', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -125,7 +123,7 @@ checkoutForm.addEventListener('submit', async (event) => {
       body: JSON.stringify(orderPayload)
     });
     const result = await response.json().catch(() => ({}));
-    if (!response.ok || !result.success || !result.purchase?.id) {
+    if (!response.ok || result.success !== true || !result.purchase?.id) {
       throw new Error(result.message || 'No se pudo guardar la compra.');
     }
     localStorage.removeItem(CART_KEY);
@@ -133,6 +131,7 @@ checkoutForm.addEventListener('submit', async (event) => {
   } catch (error) {
     checkoutError.textContent = error.message || 'No se pudo conectar con el servidor.';
     checkoutError.classList.remove('hidden');
+    window.alert(error.message || 'No se pudo confirmar el pedido. Inténtalo de nuevo.');
     checkoutSubmitButton.disabled = false;
   }
 });
