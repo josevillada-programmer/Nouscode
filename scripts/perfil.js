@@ -1,6 +1,5 @@
 const USER_KEY = 'nouscode-user';
 const TOKEN_KEY = 'nouscode-auth-token';
-const apiBase = document.documentElement.dataset.apiBase.trim().replace(/\/$/, '');
 const profileStatus = document.getElementById('profileStatus');
 const profilePurchases = document.getElementById('profilePurchases');
 const profileUser = document.getElementById('profileUser');
@@ -68,7 +67,7 @@ async function loadProfile() {
 
   profileUser.textContent = `${user.username} · ${user.email}`;
   try {
-    const response = await fetch(`${apiBase}/api/purchases/${encodeURIComponent(user.id)}`, {
+    const response = await fetch(`/api/purchases/${encodeURIComponent(user.id)}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     const result = await response.json().catch(() => ({}));
@@ -93,7 +92,7 @@ async function loadProfile() {
 document.getElementById('profileLogout').addEventListener('click', async () => {
   const token = localStorage.getItem(TOKEN_KEY);
   try {
-    await fetch(`${apiBase}/api/logout`, { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
+    await fetch('/api/logout', { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
   } catch {
   }
   clearSession();
