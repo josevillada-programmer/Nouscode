@@ -12,7 +12,6 @@ const authPanel = document.querySelector('.auth-panel');
 const accountDashboard = document.getElementById('accountDashboard');
 const accountFeedback = document.getElementById('accountFeedback');
 const accountPurchases = document.getElementById('accountPurchases');
-const apiBase = document.documentElement.dataset.apiBase.trim().replace(/\/$/, '');
 const USER_KEY = 'nouscode-user';
 const TOKEN_KEY = 'nouscode-auth-token';
 
@@ -29,7 +28,12 @@ async function apiRequest(path, options = {}) {
   const headers = new Headers(options.headers || {});
   if (options.body) headers.set('Content-Type', 'application/json');
   if (getToken()) headers.set('Authorization', `Bearer ${getToken()}`);
-  const response = await fetch(`${apiBase}${path}`, { ...options, headers });
+  let response;
+  try {
+    response = await fetch(path, { ...options, headers });
+  } catch {
+    throw new Error('No se pudo conectar con el servidor. Comprueba tu conexión e inténtalo de nuevo.');
+  }
   const result = await response.json().catch(() => ({}));
   if (!response.ok || result.success === false) {
     const error = new Error(result.message || 'No se pudo conectar con el servidor.');
@@ -109,8 +113,12 @@ async function completeAuthentication(form) {
   let result;
   try {
     result = await apiRequest('/api/login', { method: 'POST', body: JSON.stringify(payload) });
+    if (!result.success || !result.user || !result.token) {
+      throw new Error(result.message || 'El servidor devolvió una respuesta de acceso no válida.');
+    }
   } catch (error) {
     authFeedback.textContent = error.message;
+    window.alert(error.message);
     submitButton.disabled = false;
     return;
   }
@@ -118,11 +126,7 @@ async function completeAuthentication(form) {
   localStorage.setItem(USER_KEY, JSON.stringify(result.user));
   localStorage.setItem(TOKEN_KEY, result.token);
   window.dispatchEvent(new Event('nouscode:session-changed'));
-  if (new URLSearchParams(window.location.search).get('next') === 'checkout') {
-    window.location.replace('checkout.html');
-    return;
-  }
-  window.location.replace('perfil.html');
+  window.location.replace('../index.html');
 }
 
 loginForm.addEventListener('submit', (event) => {
@@ -155,6 +159,7 @@ async function restoreSession() {
   } catch (error) {
     if (error.status === 401 || error instanceof SyntaxError) {
       clearSession();
+      window.dispatchEvent(new Event('nouscode:session-changed'));
       return;
     }
     renderAccount(user);
