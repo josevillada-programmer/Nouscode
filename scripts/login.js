@@ -110,12 +110,16 @@ async function completeAuthentication(form) {
   const formData = new FormData(form);
   const payload = Object.fromEntries(formData.entries());
 
-  let result;
   try {
-    result = await apiRequest('/api/login', { method: 'POST', body: JSON.stringify(payload) });
-    if (!result.success || !result.user || !result.token) {
-      throw new Error(result.message || 'El servidor devolvió una respuesta de acceso no válida.');
+    const data = await apiRequest('/api/login', { method: 'POST', body: JSON.stringify(payload) });
+    if (data.success === true && data.user && data.token) {
+      localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+      localStorage.setItem(TOKEN_KEY, data.token);
+      window.dispatchEvent(new Event('nouscode:session-changed'));
+      window.location.replace('../index.html');
+      return;
     }
+    throw new Error(data.message || 'El servidor devolvió una respuesta de acceso no válida.');
   } catch (error) {
     authFeedback.textContent = error.message;
     window.alert(error.message);
@@ -123,10 +127,6 @@ async function completeAuthentication(form) {
     return;
   }
 
-  localStorage.setItem(USER_KEY, JSON.stringify(result.user));
-  localStorage.setItem(TOKEN_KEY, result.token);
-  window.dispatchEvent(new Event('nouscode:session-changed'));
-  window.location.replace('../index.html');
 }
 
 loginForm.addEventListener('submit', (event) => {

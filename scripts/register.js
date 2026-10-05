@@ -11,7 +11,7 @@ registerForm.addEventListener('submit', async (event) => {
   registerFeedback.textContent = 'Creando cuenta...';
   const formData = new FormData(registerForm);
   const payload = {
-    username: String(formData.get('name') || '').trim(),
+    name: String(formData.get('name') || '').trim(),
     email: String(formData.get('email') || '').trim(),
     password: String(formData.get('password') || '')
   };
@@ -27,15 +27,15 @@ registerForm.addEventListener('submit', async (event) => {
     } catch {
       throw new Error('No se pudo conectar con el servidor. Comprueba tu conexión e inténtalo de nuevo.');
     }
-    const result = await response.json().catch(() => ({}));
-    if (!response.ok || !result.success || !result.user || !result.token) {
-      throw new Error(result.message || 'No se pudo crear la cuenta.');
+    const data = await response.json().catch(() => ({}));
+    if (response.ok && data.success === true && data.user && data.token) {
+      localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+      localStorage.setItem(TOKEN_KEY, data.token);
+      window.dispatchEvent(new Event('nouscode:session-changed'));
+      window.location.replace('../index.html');
+      return;
     }
-
-    localStorage.setItem(USER_KEY, JSON.stringify(result.user));
-    localStorage.setItem(TOKEN_KEY, result.token);
-    window.dispatchEvent(new Event('nouscode:session-changed'));
-    window.location.replace('../index.html');
+    throw new Error(data.message || 'No se pudo crear la cuenta.');
   } catch (error) {
     registerFeedback.textContent = error.message || 'No se pudo conectar con el servidor.';
     window.alert(error.message || 'No se pudo crear la cuenta.');
