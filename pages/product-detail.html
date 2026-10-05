@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Detalle del producto | NoûsCode</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="../styles/style.css" />
+  <script src="../scripts/session-ui.js" defer></script>
+</head>
+<body class="commerce-page product-page">
+  <div class="commerce-shell product-shell">
+    <header class="commerce-header product-header">
+      <a class="commerce-brand" href="../index.html" aria-label="NoûsCode, volver al inicio">
+        <span class="commerce-brand-name">NoûsCode</span>
+        <span class="commerce-brand-page">Plantillas premium</span>
+      </a>
+      <nav class="commerce-header-actions" aria-label="Acciones de página">
+        <button id="darkToggle" class="commerce-theme-toggle" type="button" aria-label="Cambiar tema" title="Cambiar tema"><i data-lucide="moon"></i></button>
+        <button id="cartPageLink" class="product-cart-link" type="button" aria-label="Abrir carrito">
+          <i data-lucide="shopping-cart"></i>
+          <span>Carrito</span>
+          <span id="miniCartCount" class="product-cart-count">0</span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="product-detail-layout">
+      <aside class="product-side-column">
+        <section class="product-preview-card" aria-labelledby="previewTitle">
+          <div class="product-card-heading">
+            <p id="previewTitle" class="commerce-eyebrow">Vista previa</p>
+            <span id="productBadge" class="product-badge">Destacado</span>
+          </div>
+          <div id="thumbsContainer" class="product-thumbnails" aria-label="Vistas del producto"></div>
+        </section>
+
+        <section class="product-information-card" aria-labelledby="productName">
+          <div class="product-information-meta">
+            <p class="commerce-eyebrow">Producto</p>
+            <span id="productCategory" class="product-category"></span>
+          </div>
+          <h1 id="productName" class="product-name"></h1>
+          <p id="productSummary" class="product-summary"></p>
+        </section>
+      </aside>
+
+      <div class="product-main-column">
+        <section class="product-browser-frame" aria-label="Vista previa de la plantilla">
+          <div class="product-browser-bar" aria-hidden="true">
+            <span class="product-browser-dots"><i></i><i></i><i></i></span>
+            <span class="product-browser-address"><i data-lucide="lock-keyhole"></i> vista-previa.nouscode</span>
+            <span class="product-browser-tools"><i data-lucide="panel-top"></i></span>
+          </div>
+          <div class="product-browser-content">
+            <img id="mainImage" src="" alt="Vista principal del producto" />
+          </div>
+        </section>
+
+        <div class="product-purchase-grid">
+          <section class="product-service-card" aria-labelledby="productTitle">
+            <div class="product-service-heading">
+              <div>
+                <p class="commerce-eyebrow">Nivel de servicio</p>
+                <h2 id="productTitle" class="product-service-title"></h2>
+              </div>
+              <span class="product-support-badge"><i data-lucide="check"></i>Incluye soporte</span>
+            </div>
+            <div id="tierButtons" class="product-tier-options" role="group" aria-label="Seleccionar nivel de servicio"></div>
+            <div class="product-features">
+              <p class="commerce-eyebrow">Incluye</p>
+              <ul id="featureList" class="product-feature-list"></ul>
+            </div>
+          </section>
+
+          <aside class="product-price-card" aria-labelledby="priceHeading">
+            <p id="priceHeading" class="commerce-eyebrow">Precio</p>
+            <div class="product-price-line">
+              <span id="priceValue" class="product-price-value"></span>
+              <span class="product-currency">MXN</span>
+            </div>
+            <p class="product-price-caption">Precio del nivel seleccionado</p>
+            <div class="product-actions">
+              <button id="buyNowBtn" class="commerce-primary-button" type="button"><i data-lucide="credit-card"></i><span>Comprar ahora</span></button>
+              <button id="addCartBtn" class="product-secondary-button" type="button"><i data-lucide="shopping-bag"></i><span>Agregar al carrito</span></button>
+            </div>
+            <div class="product-delivery-details">
+              <div><span>Entrega estimada</span><strong>7–12 días</strong></div>
+              <div><span>Soporte</span><strong>Chat + email</strong></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="detailToast" class="product-toast" role="status" aria-live="polite">
+    <span class="product-toast-icon"><i data-lucide="check"></i></span>
+    <div class="product-toast-copy">
+      <p id="toastTitle">Producto agregado</p>
+      <p id="toastMessage"></p>
+      <a href="cart.html">Ver carrito</a>
+    </div>
+    <button id="closeToast" type="button" class="product-toast-close" aria-label="Cerrar notificación"><i data-lucide="x"></i></button>
+  </div>
+  <script src="../scripts/product-detail.js"></script>
+</body>
+</html>

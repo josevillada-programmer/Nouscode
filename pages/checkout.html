@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es" data-api-base="http://localhost:3000">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Finalizar compra | NoûsCode</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="../styles/style.css" />
+  <script src="../scripts/session-ui.js" defer></script>
+</head>
+<body class="commerce-page">
+  <div class="commerce-shell">
+    <header class="commerce-header">
+      <a class="commerce-brand" href="../index.html" aria-label="NoûsCode, volver al inicio">
+        <span class="commerce-brand-name">NoûsCode</span>
+        <span class="commerce-brand-page">Finalizar compra</span>
+      </a>
+      <div class="commerce-header-actions">
+        <span class="commerce-header-note"><i data-lucide="clipboard-check"></i>Pedido autenticado</span>
+        <button id="themeToggle" class="commerce-theme-toggle" type="button" aria-label="Cambiar tema" title="Cambiar tema"><i data-lucide="moon"></i></button>
+      </div>
+    </header>
+
+    <div id="emptyCheckout" class="commerce-empty-state hidden">
+      <i data-lucide="shopping-bag"></i>
+      <p class="commerce-eyebrow">Tu pedido</p>
+      <h1 class="commerce-title">Tu carrito está vacío</h1>
+      <a href="../index.html" class="commerce-primary-button">Explorar plantillas</a>
+    </div>
+
+    <main id="checkoutContent" class="commerce-checkout-layout">
+      <form id="checkoutForm" class="commerce-checkout-form" data-api-url="/api/purchases">
+        <input id="selectedPaymentMethod" type="hidden" name="paymentMethod" value="card" />
+
+        <section class="commerce-section" aria-labelledby="contactHeading">
+          <div class="commerce-section-heading">
+            <span class="commerce-step">01</span>
+            <div>
+              <p class="commerce-eyebrow">Empecemos por lo esencial</p>
+              <h1 id="contactHeading" class="commerce-section-title">Datos de contacto</h1>
+            </div>
+          </div>
+          <div class="commerce-contact-grid">
+            <label class="commerce-field">
+              <span>Nombre completo</span>
+              <input name="name" autocomplete="name" required placeholder="Tu nombre" />
+            </label>
+            <label class="commerce-field">
+              <span>Correo electrónico</span>
+              <input name="email" type="email" autocomplete="email" required placeholder="tu@email.com" />
+            </label>
+          </div>
+        </section>
+
+        <section class="commerce-section" aria-labelledby="paymentHeading">
+          <div class="commerce-section-heading">
+            <span class="commerce-step">02</span>
+            <div>
+              <p class="commerce-eyebrow">Elige cómo quieres pagar</p>
+              <h2 id="paymentHeading" class="commerce-section-title">Método de pago</h2>
+            </div>
+          </div>
+
+          <div id="paymentMethods" class="commerce-payment-grid" role="group" aria-label="Métodos de pago">
+            <button type="button" data-method="card" aria-pressed="true" aria-controls="paymentFields" class="payment-option active"><i data-lucide="credit-card"></i><strong>Tarjeta</strong><span>Crédito o débito</span></button>
+            <button type="button" data-method="transfer" aria-pressed="false" aria-controls="paymentFields" class="payment-option"><i data-lucide="landmark"></i><strong>Transferencia</strong><span>SPEI / bancaria</span></button>
+            <button type="button" data-method="wallet" aria-pressed="false" aria-controls="paymentFields" class="payment-option"><i data-lucide="wallet"></i><strong>Billetera digital</strong><span>PayPal o Mercado Pago</span></button>
+            <button type="button" data-method="family-card" aria-pressed="false" aria-controls="paymentFields" class="payment-option"><i data-lucide="heart-handshake"></i><strong>Tarjeta familiar</strong><span>La de un familiar</span></button>
+            <button type="button" data-method="bestie-photo" aria-pressed="false" aria-controls="paymentFields" class="payment-option"><i data-lucide="camera"></i><strong>Foto de tu mejor amiga</strong><span>La más linda, claro</span></button>
+            <button type="button" data-method="good-vibes" aria-pressed="false" aria-controls="paymentFields" class="payment-option"><i data-lucide="sparkles"></i><strong>Buenas vibras</strong><span>Fe, esperanza y café</span></button>
+            <button type="button" data-method="pay-tomorrow" aria-pressed="false" aria-controls="paymentFields" class="payment-option"><i data-lucide="calendar-clock"></i><strong>Pago mañana</strong><span>Te juro que sí pago</span></button>
+            <button type="button" data-method="trust-god" aria-pressed="false" aria-controls="paymentFields" class="payment-option"><i data-lucide="hand-heart"></i><strong>¿Confías en Dios?</strong><span>Método de fe</span></button>
+          </div>
+
+          <div id="paymentFields" class="commerce-payment-fields" aria-live="polite"></div>
+          <p class="commerce-secure-note"><i data-lucide="lock-keyhole"></i>El pedido se guardará en tu historial. No introduzcas datos de tarjetas reales: no hay una pasarela de cobro configurada.</p>
+        </section>
+
+        <p id="checkoutError" class="commerce-error hidden" role="alert"></p>
+        <button class="commerce-primary-button commerce-submit-button" type="submit"><span>Confirmar pedido</span><i data-lucide="arrow-right"></i></button>
+      </form>
+
+      <aside class="commerce-summary commerce-order-summary" aria-labelledby="orderSummaryTitle">
+        <p class="commerce-eyebrow">Tu selección</p>
+        <h2 id="orderSummaryTitle" class="commerce-summary-title">Resumen del pedido</h2>
+        <div id="orderItems" class="commerce-order-list"></div>
+        <div class="commerce-summary-total">
+          <span>Total</span>
+          <strong id="orderTotal"></strong>
+        </div>
+        <p class="commerce-summary-note">Impuestos y detalles finales se confirman antes del pago.</p>
+      </aside>
+    </main>
+
+  </div>
+  <script src="../scripts/checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" data-api-base="http://localhost:3000">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Mi perfil | NoûsCode</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/style.css" />
+  <script src="../scripts/session-ui.js" defer></script>
+  <script src="../scripts/perfil.js" defer></script>
+</head>
+<body class="commerce-page">
+  <main class="commerce-shell profile-shell">
+    <header class="commerce-header">
+      <a class="commerce-brand" href="../index.html" aria-label="NoûsCode, inicio">
+        <span class="commerce-brand-name">NoûsCode</span>
+        <span class="commerce-brand-page">Mi perfil</span>
+      </a>
+      <div class="profile-header-actions">
+        <a class="profile-nav-link" href="cart.html">Volver al carrito</a>
+        <button class="account-logout" id="profileLogout" type="button">Cerrar sesión</button>
+      </div>
+    </header>
+
+    <section class="profile-intro" aria-labelledby="profileTitle">
+      <p class="commerce-eyebrow">Cuenta NoûsCode</p>
+      <h1 class="commerce-title" id="profileTitle">Historial de compras</h1>
+      <p class="profile-user" id="profileUser"></p>
+    </section>
+
+    <p class="profile-status" id="profileStatus" role="status" aria-live="polite">Cargando compras...</p>
+    <section class="profile-purchases" id="profilePurchases" aria-label="Compras registradas"></section>
+    <a class="commerce-primary-button profile-shop-link" href="../index.html">Seguir explorando</a>
+  </main>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es" data-api-base="http://localhost:3000">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="theme-color" content="#ffffff" />
+	<title>Acceso | NoûsCode</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="../styles/style.css" />
+	<script src="../scripts/session-ui.js" defer></script>
+	<script src="../scripts/login.js" defer></script>
+	<script src="../scripts/register.js" defer></script>
+</head>
+<body class="auth-page">
+	<header class="auth-header">
+		<a href="../index.html" class="brand" aria-label="NoûsCode, inicio">NoûsCode</a>
+		<a class="auth-back-link" href="../index.html">Volver a la tienda</a>
+	</header>
+
+	<main class="auth-main">
+		<section class="auth-intro" aria-labelledby="authIntroTitle">
+			<span class="auth-eyebrow">NoûsCode / Cuenta</span>
+			<h1 id="authIntroTitle">Un espacio para tus próximas ideas.</h1>
+			<p>Accede a tu cuenta para continuar con tus proyectos y compras.</p>
+			<div class="auth-intro-mark" aria-hidden="true">N<span>.</span></div>
+		</section>
+
+		<section class="auth-panel" aria-label="Acceso a tu cuenta">
+			<div class="auth-heading">
+				<span class="auth-eyebrow" id="authEyebrow">Qué bueno tenerte aquí</span>
+				<h2 id="authTitle">Iniciar sesión</h2>
+			</div>
+
+			<div class="auth-tabs" role="tablist" aria-label="Tipo de acceso">
+				<button class="auth-tab active" id="loginTab" type="button" role="tab" aria-selected="true" aria-controls="loginForm">Iniciar sesión</button>
+				<button class="auth-tab" id="signupTab" type="button" role="tab" aria-selected="false" aria-controls="signupForm">Crear cuenta</button>
+			</div>
+
+			<form class="auth-form" id="loginForm" autocomplete="on">
+				<label class="auth-field">
+					<span>Correo electrónico</span>
+					<input type="email" name="email" autocomplete="email" placeholder="nombre@correo.com" required />
+				</label>
+				<label class="auth-field">
+					<span>Contraseña</span>
+					<input type="password" name="password" autocomplete="current-password" placeholder="Tu contraseña" minlength="8" required />
+				</label>
+				<button class="auth-submit" type="submit">Entrar <span aria-hidden="true">→</span></button>
+				<p class="auth-switch-copy">¿Aún no tienes cuenta? <button type="button" data-show-signup>Regístrate</button></p>
+			</form>
+
+			<form class="auth-form" id="signupForm" autocomplete="on" hidden>
+				<label class="auth-field">
+					<span>Nombre completo</span>
+					<input type="text" name="name" autocomplete="name" placeholder="Tu nombre" minlength="2" required />
+				</label>
+				<label class="auth-field">
+					<span>Correo electrónico</span>
+					<input type="email" name="email" autocomplete="email" placeholder="nombre@correo.com" required />
+				</label>
+				<label class="auth-field">
+					<span>Contraseña</span>
+					<input type="password" name="password" autocomplete="new-password" placeholder="Mínimo 8 caracteres" minlength="8" required />
+				</label>
+				<button class="auth-submit" type="submit">Crear cuenta <span aria-hidden="true">→</span></button>
+				<p class="auth-switch-copy">¿Ya tienes cuenta? <button type="button" data-show-login>Inicia sesión</button></p>
+			</form>
+
+			<p class="auth-feedback" id="authFeedback" role="status" aria-live="polite"></p>
+			<p class="auth-legal">Al continuar, aceptas nuestros <a href="#">términos y condiciones</a>.</p>
+		</section>
+
+		<section class="account-dashboard" id="accountDashboard" aria-labelledby="accountName" hidden>
+			<div class="account-dashboard-heading">
+				<div>
+					<span class="auth-eyebrow">Tu cuenta</span>
+					<h2 id="accountName"></h2>
+					<p id="accountEmail"></p>
+				</div>
+				<button class="account-logout" id="logoutButton" type="button" aria-label="Cerrar sesión">Cerrar sesión</button>
+			</div>
+			<div class="account-history-heading">
+				<h3>Historial de compras</h3>
+				<a class="account-profile-link" href="perfil.html">Ver perfil</a>
+			</div>
+			<p class="account-feedback" id="accountFeedback" role="status" aria-live="polite"></p>
+			<div class="account-purchases" id="accountPurchases" aria-live="polite"></div>
+		</section>
+	</main>
+
+	<footer class="auth-footer">
+		<span>© 2026 NoûsCode</span>
+		<span>Hecho para avanzar.</span>
+	</footer>
+</body>
+</html>

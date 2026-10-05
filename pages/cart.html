@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es" data-api-base="http://localhost:3000">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Carrito | NoûsCode</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="../styles/style.css" />
+  <script src="../scripts/session-ui.js" defer></script>
+</head>
+<body class="commerce-page">
+  <div class="commerce-shell">
+    <header class="commerce-header">
+      <a class="commerce-brand" href="../index.html" aria-label="NoûsCode, volver al inicio">
+        <span class="commerce-brand-name">NoûsCode</span>
+        <span class="commerce-brand-page">Carrito</span>
+      </a>
+      <nav class="commerce-header-actions" aria-label="Acciones de cuenta">
+        <button id="themeToggle" class="commerce-theme-toggle" type="button" aria-label="Cambiar tema" title="Cambiar tema"><i data-lucide="moon"></i></button>
+        <a class="commerce-back-link" href="../index.html">Seguir comprando</a>
+      </nav>
+    </header>
+
+    <main class="commerce-layout commerce-cart-layout">
+      <section class="commerce-cart-section" aria-labelledby="cartTitle">
+        <div class="commerce-page-heading">
+          <div>
+            <p class="commerce-eyebrow">Tu selección</p>
+            <h1 id="cartTitle" class="commerce-title">Tus productos</h1>
+          </div>
+          <span id="itemCount" class="commerce-item-count">0 artículos</span>
+        </div>
+        <p id="cartError" class="commerce-error hidden" role="alert" aria-live="assertive"></p>
+        <div id="cartItems" class="commerce-cart-list" data-api-url="/api/cart" data-service-levels-url="/api/service-levels" aria-live="polite"></div>
+      </section>
+
+      <aside class="commerce-summary commerce-cart-summary" aria-labelledby="cartSummaryTitle">
+        <p class="commerce-eyebrow">Resumen</p>
+        <h2 id="cartSummaryTitle" class="commerce-summary-title">Tu pedido</h2>
+        <div class="commerce-summary-total">
+          <span>Subtotal</span>
+          <strong id="cartTotal">$0</strong>
+        </div>
+        <p class="commerce-summary-note">El precio incluye el nivel de servicio seleccionado.</p>
+        <button id="checkoutButton" class="commerce-primary-button" type="button"><i data-lucide="credit-card"></i><span>Continuar al pago</span></button>
+        <p class="commerce-secure-note"><i data-lucide="lock-keyhole"></i>Compra segura · Sin cargos ocultos</p>
+      </aside>
+    </main>
+  </div>
+  <script src="../scripts/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+{
+  "users": [
+    {
+      "id": "2d8c3753-6d55-4cc1-8f52-8f3b4007ca92",
+      "username": "Jose Eduardo Villada Trejo",
+      "email": "josevillada2000jp@gmail.com",
+      "passwordHash": "scrypt$VjsJssqTyYwzu6s5KPP_PA$ycrWEKtfNTzke0kVZl2-maClbcblEp2biSorvd8Qm-DHo6djuAwcQjnQ9-bdEghuz8WQ9bLctAGOQotGOrHBbA",
+      "createdAt": "2026-10-05T02:41:23.100Z",
+      "isAdmin": true
+    }
+  ],
+  "purchases": [
+    {
+      "id": "5135c055-5a94-4e06-abdc-e6feef71ca72",
+      "userId": "2d8c3753-6d55-4cc1-8f52-8f3b4007ca92",
+      "date": "2026-10-05T02:41:43.948Z",
+      "items": [
+        {
+          "id": "plantilla-1",
+          "productId": "plantilla-1",
+          "name": "Plantilla 1",
+          "tier": "Básico",
+          "nivelServicioId": 1,
+          "price": 2500,
+          "quantity": 1,
+          "lineTotal": 2500
+        }
+      ],
+      "total": 2500
+    },
+    {
+      "id": "697e97c4-87b9-45ca-af7e-8f36f67822d2",
+      "userId": "2d8c3753-6d55-4cc1-8f52-8f3b4007ca92",
+      "date": "2026-10-05T02:41:46.569Z",
+      "items": [
+        {
+          "id": "plantilla-1",
+          "productId": "plantilla-1",
+          "name": "Plantilla 1",
+          "tier": "Básico",
+          "nivelServicioId": 1,
+          "price": 2500,
+          "quantity": 1,
+          "lineTotal": 2500
+        }
+      ],
+      "total": 2500
+    },
+    {
+      "id": "0750d879-5cb1-43e9-a47a-4e4231014e79",
+      "userId": "2d8c3753-6d55-4cc1-8f52-8f3b4007ca92",
+      "date": "2026-10-05T02:41:47.373Z",
+      "items": [
+        {
+          "id": "plantilla-1",
+          "productId": "plantilla-1",
+          "name": "Plantilla 1",
+          "tier": "Básico",
+          "nivelServicioId": 1,
+          "price": 2500,
+          "quantity": 1,
+          "lineTotal": 2500
+        }
+      ],
+      "total": 2500
+    },
+    {
+      "id": "6ee01433-9325-471d-916f-30df03044140",
+      "userId": "2d8c3753-6d55-4cc1-8f52-8f3b4007ca92",
+      "date": "2026-10-05T02:41:47.960Z",
+      "items": [
+        {
+          "id": "plantilla-1",
+          "productId": "plantilla-1",
+          "name": "Plantilla 1",
+          "tier": "Básico",
+          "nivelServicioId": 1,
+          "price": 2500,
+          "quantity": 1,
+          "lineTotal": 2500
+        }
+      ],
+      "total": 2500
+    },
+    {
+      "id": "a2369282-d91b-4f64-b1a1-0c690486af73",
+      "userId": "2d8c3753-6d55-4cc1-8f52-8f3b4007ca92",
+      "date": "2026-10-05T03:32:54.643Z",
+      "items": [
+        {
+          "id": "plantilla-1",
+          "productId": "plantilla-1",
+          "name": "Plantilla 1",
+          "tier": "Básico",
+          "nivelServicioId": 1,
+          "price": 2500,
+          "quantity": 1,
+          "lineTotal": 2500
+        }
+      ],
+      "total": 2500
+    },
+    {
+      "id": "3e196893-a33c-4e2e-88d2-e0033a184b57",
+      "userId": "2d8c3753-6d55-4cc1-8f52-8f3b4007ca92",
+      "date": "2026-10-05T04:35:08.017Z",
+      "items": [
+        {
+          "id": "plantilla-2",
+          "productId": "plantilla-2",
+          "name": "Plantilla 2",
+          "tier": "Medio",
+          "nivelServicioId": 5,
+          "price": 4000,
+          "quantity": 3,
+          "lineTotal": 12000
+        },
+        {
+          "id": "plantilla-1",
+          "productId": "plantilla-1",
+          "name": "Plantilla 1",
+          "tier": "Avanzado",
+          "nivelServicioId": 3,
+          "price": 6500,
+          "quantity": 3,
+          "lineTotal": 19500
+        }
+      ],
+      "total": 31500
+    },
+    {
+      "id": "9324d653-da93-40d7-a9b9-cf378cba7980",
+      "userId": "2d8c3753-6d55-4cc1-8f52-8f3b4007ca92",
+      "date": "2026-10-05T04:54:32.050Z",
+      "items": [
+        {
+          "id": "plantilla-1",
+          "productId": "plantilla-1",
+          "name": "Plantilla 1",
+          "tier": "Avanzado",
+          "nivelServicioId": 3,
+          "price": 6500,
+          "quantity": 1,
+          "lineTotal": 6500
+        },
+        {
+          "id": "plantilla-2",
+          "productId": "plantilla-2",
+          "name": "Plantilla 2",
+          "tier": "Avanzado",
+          "nivelServicioId": 6,
+          "price": 6500,
+          "quantity": 1,
+          "lineTotal": 6500
+        },
+        {
+          "id": "plantilla-3",
+          "productId": "plantilla-3",
+          "name": "Plantilla 3",
+          "tier": "Avanzado",
+          "nivelServicioId": 9,
+          "price": 11000,
+          "quantity": 1,
+          "lineTotal": 11000
+        },
+        {
+          "id": "plantilla-4",
+          "productId": "plantilla-4",
+          "name": "Plantilla 4",
+          "tier": "Avanzado",
+          "nivelServicioId": 12,
+          "price": 15000,
+          "quantity": 1,
+          "lineTotal": 15000
+        },
+        {
+          "id": "plantilla-5",
+          "productId": "plantilla-5",
+          "name": "Plantilla 5",
+          "tier": "Avanzado",
+          "nivelServicioId": 15,
+          "price": 4000,
+          "quantity": 1,
+          "lineTotal": 4000
+        },
+        {
+          "id": "plantilla-6",
+          "productId": "plantilla-6",
+          "name": "Plantilla 6",
+          "tier": "Avanzado",
+          "nivelServicioId": 18,
+          "price": 10000,
+          "quantity": 1,
+          "lineTotal": 10000
+        }
+      ],
+      "total": 53000
+    }
+  ],
+  "sessions": [
+    {
+      "tokenHash": "e24a58fb3f0a06ae425b649b48a3fe3116258681e4f6b241938dbe554cd3406c",
+      "userId": "2d8c3753-6d55-4cc1-8f52-8f3b4007ca92",
+      "expiresAt": "2026-10-12T04:31:11.462Z"
+    },
+    {
+      "tokenHash": "1d74af1245e085ebd7551c2b8e870333f5649d68f4225a2195539edb1bb959d6",
+      "userId": "2d8c3753-6d55-4cc1-8f52-8f3b4007ca92",
+      "expiresAt": "2026-10-12T04:34:36.686Z"
+    }
+  ],
+  "carts": [
+    {
+      "cartId": "0ac20b3d-6e15-49a7-9d1c-8d1d2fbb4f37",
+      "items": []
+    },
+    {
+      "cartId": "dd6e0059-f46c-4b9a-aff6-a8638abd4bfe",
+      "items": []
+    }
+  ],
+  "products": []
+}
